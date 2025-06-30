@@ -91,8 +91,13 @@ In this exercise you will:
 #### Reflection Questions
 
 1. **How do you link `prev` and `next` pointers correctly using a static array?**
+    Um `prev` und `next` zu verlinken, nutzt man die festen Array Elemente. `prev` zeigt hier auf das vorherige und `next` auf das nächste Element.
+ 
 2. **What are advantages and limitations of compile-time vs. dynamic allocation?**
+    Die Compile-time ist schneller und sicherer, da keine dynamische Speicherverwaltung nötig ist. Allerdings ist die Größe der Datenstruktur auf die vorgegebene größe limitiert. Bei der Dynamischen allocation können dagegen flexible Strukturen verwendet werden.
+ 
 3. **How would you extend this static list to include additional data fields?**
+    Um weitere Datenfelder hinzuzufügen, müsste man zusätzlich weitere variabelen anlegen, wie z.B next2, prev2,... .
 
 ---
 
@@ -159,8 +164,13 @@ In this exercise you will:
 #### Reflection Questions
 
 1. **Why is `malloc` necessary when adding nodes dynamically?**
+    Mit `malloc` wird Speicher im Heap reserviert, da die Anzahl der Elemente vorher nicht bekannt ist. Ohne diesen Befehl wäre die Liste nicht flexibel erweiterbar.
+
 2. **How can you traverse the list to print each node’s address and value?**
+    Man startet die Liste bei `head` und geht mit den `next` Zeigern über eine Schleife durch die Liste. Mit `p->value` und `(void*)p` kann man die Addresse dann ausgeben lassen.
+
 3. **What are the consequences of not freeing the list before exit?**
+    Wird die liste nicht mit `free` freigegeben, bleibt der Speicher belegt.
 
 ---
 
@@ -244,8 +254,13 @@ gcc -o solutions/json_main solutions/json_main.c solutions/json_list.o -ljansson
 #### Reflection Questions
 
 1. **How does using `getopt` make the program more flexible than `argv[1]`?**
+    `Getopt` ermöglicht optionale und benannte Kommandozeilenargumente (z.B. -i filename), was die Eingabe flexibler und übersichtlicher macht, außerdem kann die Reihenfolge der Argumente variieren.
+
 2. **What happens if the user omits the `-i` option?**
+    Das Programm zeigt die Fehlermeldung und beendet sich.
+
 3. **How can you validate that the JSON file loaded is indeed an array?**
+    Mit `json_is_array(root)` überprüft man den Typ des JSON-Root-Objekts und kann so sicherstellen, dass die Daten als Array vorliegen.
 
 ---
 
